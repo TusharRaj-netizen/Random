@@ -11,6 +11,10 @@ import {
   Info,
   ArrowRight,
   Stethoscope,
+  MapPin,
+  HeartPulse,
+  BarChart3,
+  Landmark,
 } from "lucide-react";
 import { useLanguage } from "@/lib/language";
 import { getHealthTips, type HealthTip } from "@/lib/api";
@@ -36,11 +40,25 @@ export default function HomePage() {
       color: "bg-brand-600",
     },
     {
+      href: "/facilities",
+      icon: MapPin,
+      title: t("Nearby Facilities", "आस-पास सुविधाएँ"),
+      desc: t("Hospitals & pharmacies on map", "अस्पताल व दवाई की दुकान"),
+      color: "bg-red-600",
+    },
+    {
       href: "/medicines",
       icon: Pill,
       title: t("Find Medicines", "दवाएँ खोजें"),
       desc: t("Jan-Aushadhi prices & savings", "जन औषधि दाम व बचत"),
       color: "bg-sage-600",
+    },
+    {
+      href: "/prices",
+      icon: BarChart3,
+      title: t("Price Tracker", "दाम ट्रैकर"),
+      desc: t("Compare & track medicine prices", "दवा दाम तुलनें व ट्रैक करें"),
+      color: "bg-indigo-600",
     },
     {
       href: "/reminders",
@@ -50,11 +68,25 @@ export default function HomePage() {
       color: "bg-sky-600",
     },
     {
+      href: "/sos",
+      icon: HeartPulse,
+      title: t("SOS & Emergency", "एसओएस व आपातकाल"),
+      desc: t("108 ambulance & contacts", "108 एम्बुलेंस व संपर्क"),
+      color: "bg-red-700",
+    },
+    {
+      href: "/schemes",
+      icon: Landmark,
+      title: t("Govt Schemes", "सरकारी योजनाएं"),
+      desc: t("Senior healthcare schemes", "बुजुर्ग स्वास्थ्य योजनाएँ"),
+      color: "bg-purple-600",
+    },
+    {
       href: "/tips",
       icon: Lightbulb,
       title: t("Health Tips", "स्वास्थ्य सुझाव"),
       desc: t("Daily tips for healthy aging", "सेहतमंद बुढ़ापे के सुझाव"),
-      color: "bg-purple-600",
+      color: "bg-amber-600",
     },
   ];
 

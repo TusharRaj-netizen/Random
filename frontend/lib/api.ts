@@ -172,3 +172,140 @@ export async function getHealthCheck(): Promise<{
 }> {
   return request("/api/health");
 }
+
+// ===========================================================================
+// Feature 1: Facilities
+// ===========================================================================
+export type FacilityType = "hospital" | "pharmacy" | "jan_aushadhi" | "chemist_24x7";
+
+export interface NearbyFacility {
+  id: string;
+  name: string;
+  type: FacilityType;
+  lat: number;
+  lng: number;
+  address: string;
+  phone: string | null;
+  open_hours: string | null;
+  is_24x7: boolean;
+  distance_km: number;
+  distance_label: string;
+  maps_url: string;
+}
+
+export interface NearbyFacilitiesResponse {
+  lat: number;
+  lng: number;
+  filter: string;
+  count: number;
+  facilities: NearbyFacility[];
+}
+
+export async function getNearbyFacilities(
+  lat?: number,
+  lng?: number,
+  filter: string = "all",
+): Promise<NearbyFacilitiesResponse> {
+  const params = new URLSearchParams({ filter });
+  if (lat != null) params.set("lat", String(lat));
+  if (lng != null) params.set("lng", String(lng));
+  return request<NearbyFacilitiesResponse>(`/api/facilities/nearby?${params.toString()}`);
+}
+
+// ===========================================================================
+// Feature 3: Market price comparison & fluctuations
+// ===========================================================================
+export interface MarketMedicine {
+  id: string;
+  brand_name: string;
+  salt_composition: string;
+  manufacturer: string;
+  dosage_form: string;
+}
+
+export interface CurrentPrice {
+  source: string;
+  selling_price: number;
+  mrp: number;
+  is_jan_aushadhi: boolean;
+  savings_vs_highest: number | null;
+}
+
+export interface PricePoint {
+  medicine_id: string;
+  recorded_date: string;
+  source: string;
+  mrp: number;
+  selling_price: number;
+}
+
+export interface FluctuationResponse {
+  medicine: MarketMedicine;
+  nppa_ceiling_price: number;
+  current_prices: CurrentPrice[];
+  history: PricePoint[];
+  jan_aushadhi_monthly_savings: number;
+}
+
+export interface MarketMedicineListResponse {
+  count: number;
+  medicines: MarketMedicine[];
+}
+
+export async function listMarketMedicines(): Promise<MarketMedicineListResponse> {
+  return request<MarketMedicineListResponse>("/api/market/medicines");
+}
+
+export async function getFluctuations(medicineId: string): Promise<FluctuationResponse> {
+  return request<FluctuationResponse>(`/api/market/medicines/${medicineId}/fluctuations`);
+}
+
+// ===========================================================================
+// Feature 4: Government schemes
+// ===========================================================================
+export interface GovScheme {
+  id: string;
+  name_en: string;
+  name_hi: string;
+  category: string;
+  benefit_summary_en: string;
+  benefit_summary_hi: string;
+  eligibility_en: string;
+  eligibility_hi: string;
+  official_link: string;
+  icon: string;
+}
+
+export interface SchemesResponse {
+  count: number;
+  schemes: GovScheme[];
+}
+
+export async function getSchemes(): Promise<SchemesResponse> {
+  return request<SchemesResponse>("/api/schemes");
+}
+
+// ===========================================================================
+// Feature 5: Cline assistant audit workflows
+// ===========================================================================
+export interface AuditWorkflow {
+  key: string;
+  label: string;
+  description: string;
+}
+
+export interface AuditResult {
+  workflow: string;
+  status: string;
+  summary: string;
+  details: string[];
+  timestamp: string;
+}
+
+export async function listAuditWorkflows(): Promise<{ workflows: AuditWorkflow[] }> {
+  return request<{ workflows: AuditWorkflow[] }>("/api/cline/workflows");
+}
+
+export async function runAuditWorkflow(workflow: string): Promise<AuditResult> {
+  return request<AuditResult>(`/api/cline/run/${workflow}`, { method: "POST" });
+}

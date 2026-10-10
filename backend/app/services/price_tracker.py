@@ -24,7 +24,7 @@ from app.schemas import (
     MarketMedicine,
     MarketMedicineListResponse,
     MedicineInsight,
-    MedicineSearchResponse,
+    MarketSearchResponse,
     PricePoint,
 )
 
@@ -124,7 +124,7 @@ def get_market_medicine(medicine_id: str) -> MarketMedicine | None:
     return None
 
 
-def search_market_medicines(query: str = "", limit: int = 20) -> MedicineSearchResponse:
+def search_market_medicines(query: str = "", limit: int = 20) -> MarketSearchResponse:
     """Search market medicines by brand name or salt composition (autocomplete)."""
     meds = load_market_medicines()
     q = query.lower().strip()
@@ -148,7 +148,7 @@ def search_market_medicines(query: str = "", limit: int = 20) -> MedicineSearchR
                 scored.append((m, score))
         scored.sort(key=lambda x: x[1], reverse=True)
         results = [m for m, _ in scored[:limit]]
-    return MedicineSearchResponse(query=query, count=len(results), medicines=results)
+    return MarketSearchResponse(query=query, count=len(results), medicines=results)
 
 
 def list_market_medicines() -> MarketMedicineListResponse:

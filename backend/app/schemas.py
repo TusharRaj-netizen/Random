@@ -205,7 +205,7 @@ class MarketMedicine(BaseModel):
     unit_mrp: float = 0.0
 
 
-class MedicineSearchResponse(BaseModel):
+class MarketSearchResponse(BaseModel):
     query: str
     count: int
     medicines: List[MarketMedicine]
@@ -358,8 +358,7 @@ __all__ = [
     "NearbyFacility",
     "NearbyFacilitiesResponse",
     "MarketMedicine",
-    "MedicineSearchResponse",
-    "PricePoint",
+    "MarketSearchResponse",
     "CurrentPrice",
     "FluctuationResponse",
     "MarketMedicineListResponse",

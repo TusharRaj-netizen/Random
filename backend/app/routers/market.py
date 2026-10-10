@@ -13,7 +13,7 @@ from app.schemas import (
     FluctuationResponse,
     MarketMedicineListResponse,
     MedicineInsight,
-    MedicineSearchResponse,
+    MarketSearchResponse,
 )
 from app.services import price_tracker
 
@@ -25,11 +25,11 @@ def list_medicines() -> MarketMedicineListResponse:
     return price_tracker.list_market_medicines()
 
 
-@router.get("/search", response_model=MedicineSearchResponse, summary="Search medicines (autocomplete)")
+@router.get("/search", response_model=MarketSearchResponse, summary="Search medicines (autocomplete)")
 def search_medicines(
     q: str = Query("", description="Search query for brand name, salt or manufacturer"),
     limit: int = Query(20, ge=1, le=50),
-) -> MedicineSearchResponse:
+) -> MarketSearchResponse:
     return price_tracker.search_market_medicines(query=q, limit=limit)
 
 

@@ -3,7 +3,7 @@ import "./globals.css";
 import { LanguageProvider } from "@/lib/language";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
-import ClineAssistant from "@/components/ClineAssistant";
+import HealthChatbot from "@/components/HealthChatbot";
 
 export const metadata: Metadata = {
   title: "Vridh-Mitra (वृद्ध-मित्र) | Jan-Aushadhi Healthcare Copilot",
@@ -33,7 +33,7 @@ export default function RootLayout({
           <Header />
           <main className="mx-auto max-w-3xl px-4 py-6">{children}</main>
           <BottomNav />
-          <ClineAssistant />
+          <HealthChatbot />
         </LanguageProvider>
       </body>
     </html>

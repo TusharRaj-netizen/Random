@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  MessageCircle, Pill, Bell, Lightbulb, Home, MapPin, HeartPulse, BarChart3, Landmark,
+  MessageCircle, Pill, Bell, Lightbulb, Home, MapPin, HeartPulse, BarChart3, Landmark, ShoppingCart,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -17,6 +17,7 @@ export default function BottomNav() {
     { href: "/facilities", label: t("Nearby", "आस-पास"), icon: MapPin, match: pathname.startsWith("/facilities") },
     { href: "/medicines", label: t("Medicines", "दवाएँ"), icon: Pill, match: pathname.startsWith("/medicines") },
     { href: "/prices", label: t("Prices", "दाम"), icon: BarChart3, match: pathname.startsWith("/prices") },
+    { href: "/order-planner", label: t("Order Kit", "ऑर्डर"), icon: ShoppingCart, match: pathname.startsWith("/order-planner") },
     { href: "/reminders", label: t("Reminders", "रिमाइंडर"), icon: Bell, match: pathname.startsWith("/reminders") },
     { href: "/sos", label: t("SOS", "एसओएस"), icon: HeartPulse, match: pathname.startsWith("/sos") },
     { href: "/schemes", label: t("Schemes", "योजना"), icon: Landmark, match: pathname.startsWith("/schemes") },

@@ -309,3 +309,109 @@ export async function listAuditWorkflows(): Promise<{ workflows: AuditWorkflow[]
 export async function runAuditWorkflow(workflow: string): Promise<AuditResult> {
   return request<AuditResult>(`/api/cline/run/${workflow}`, { method: "POST" });
 }
+
+// ===========================================================================
+// Feature 1: Dynamic medicine search (autocomplete)
+// ===========================================================================
+export interface MarketMedicine {
+  id: string;
+  brand_name: string;
+  salt_composition: string;
+  manufacturer: string;
+  dosage_form: string;
+  pack_size: number;
+  unit_mrp: number;
+}
+
+export interface MarketSearchResponse {
+  query: string;
+  count: number;
+  medicines: MarketMedicine[];
+}
+
+export async function searchMarketMeds(query: string, limit: number = 20): Promise<MarketSearchResponse> {
+  return request<MarketSearchResponse>(`/api/market/search?q=${encodeURIComponent(query)}&limit=${limit}`);
+}
+
+// ===========================================================================
+// Feature 3: Basket / recurring order planner
+// ===========================================================================
+export interface BasketItemReq {
+  medicine_id: string;
+  daily_dosage: number;
+}
+
+export interface BasketResult {
+  medicine_id: string;
+  brand_name: string;
+  daily_dosage: number;
+  duration_days: number;
+  total_units: number;
+  strips_needed: number;
+  prices_per_source: Record<string, number>;
+  highest_price: number;
+  jan_aushadhi_total: number;
+  savings: number;
+}
+
+export interface BasketCalculationResponse {
+  items: BasketResult[];
+  duration_days: number;
+  source_totals: Record<string, number>;
+  total_savings: number;
+}
+
+export async function calculateBasket(items: BasketItemReq[], durationDays: number): Promise<BasketCalculationResponse> {
+  return request<BasketCalculationResponse>(`/api/market/basket?duration_days=${durationDays}`, {
+    method: "POST",
+    body: JSON.stringify(items),
+  });
+}
+
+// ===========================================================================
+// Feature 4: Transit fare estimation
+// ===========================================================================
+export interface FareEstimate {
+  type: string;
+  label: string;
+  base_fare: number;
+  per_km_rate: number;
+  estimated_fare: number;
+}
+
+export interface FareEstimateResponse {
+  distance_km: number;
+  fares: FareEstimate[];
+}
+
+export async function getFareEstimates(distanceKm: number): Promise<FareEstimateResponse> {
+  return request<FareEstimateResponse>(`/api/market/fares?distance_km=${distanceKm}`);
+}
+
+// ===========================================================================
+// Feature 6: Medicine insights (tips & patient experiences)
+// ===========================================================================
+export interface LifestyleTip {
+  type: string;
+  text: string;
+}
+
+export interface PatientExperience {
+  patient: string;
+  feedback: string;
+  effectiveness: string;
+}
+
+export interface MedicineInsight {
+  medicine_id: string;
+  condition: string;
+  condition_hi: string;
+  lifestyle_tips: LifestyleTip[];
+  timing_advice: string;
+  food_interactions: string;
+  patient_experiences: PatientExperience[];
+}
+
+export async function getMedicineInsight(medicineId: string): Promise<MedicineInsight> {
+  return request<MedicineInsight>(`/api/market/medicines/${medicineId}/insights`);
+}

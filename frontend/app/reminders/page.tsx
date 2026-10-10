@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Bell, Plus, Trash2, Clock, Pill, Check, X, Utensils } from "lucide-react";
+import { Bell, Plus, Trash2, Clock, Pill, Check, X, Utensils, Volume2, AlarmClock } from "lucide-react";
 import { useLanguage } from "@/lib/language";
 import {
   listReminders,
@@ -10,6 +10,7 @@ import {
   updateReminder,
   type Reminder,
 } from "@/lib/api";
+import { useAlarm } from "@/lib/useAlarm";
 import Disclaimer from "@/components/Disclaimer";
 
 const FREQS = ["daily", "twice_daily", "thrice_daily", "weekly", "as_needed"];
@@ -44,6 +45,8 @@ export default function RemindersPage() {
     with_food: true,
     notes: "",
   });
+
+  const { settings: alarmSettings, saveSettings: saveAlarmSettings, alarm, markTaken, snooze } = useAlarm(reminders);
 
   const load = () => {
     setLoading(true);
@@ -206,6 +209,39 @@ export default function RemindersPage() {
       </div>
 
       <Disclaimer />
+
+      {/* Alarm Settings */}
+      <section className="card p-4">
+        <h3 className="mb-2 flex items-center gap-2 text-lg font-bold text-gray-700"><AlarmClock className="h-5 w-5 text-brand-500" aria-hidden />{t("Alarm Settings", "अलार्म सेटिंग्स")}</h3>
+        <label className="flex items-center justify-between gap-2 py-2">
+          <span className="flex items-center gap-2 text-base font-semibold text-gray-700"><Volume2 className="h-5 w-5 text-brand-500" aria-hidden />{t("Enable Alarm Sound", "अलार्म ध्वनि चालू")}</span>
+          <input type="checkbox" checked={alarmSettings.enabled} onChange={(e) => saveAlarmSettings({ ...alarmSettings, enabled: e.target.checked })} className="h-7 w-7 rounded accent-brand-600" />
+        </label>
+        {alarmSettings.enabled && (
+          <div className="py-2">
+            <label className="block text-sm font-semibold text-gray-600">{t("Volume", "आवाज़")}: {Math.round(alarmSettings.volume * 100)}%</label>
+            <input type="range" min={0} max={1} step={0.1} value={alarmSettings.volume} onChange={(e) => saveAlarmSettings({ ...alarmSettings, volume: parseFloat(e.target.value) })} className="w-full accent-brand-600" />
+          </div>
+        )}
+      </section>
+
+      {/* Alarm Modal */}
+      {alarm.active && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+          <div className="w-full max-w-sm rounded-3xl border-2 border-brand-300 bg-white p-6 text-center shadow-2xl animate-fade-in">
+            <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-red-100">
+              <AlarmClock className="h-10 w-10 animate-pulse text-red-600" aria-hidden />
+            </div>
+            <h2 className="text-2xl font-extrabold text-gray-800">{t("Medicine Time!", "दवा का समय!")}</h2>
+            <p className="mt-1 text-lg text-gray-600">{alarm.reminderName}</p>
+            <p className="text-sm text-gray-400">{new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</p>
+            <div className="mt-5 flex flex-col gap-3">
+              <button onClick={markTaken} className="btn-primary w-full bg-sage-600 hover:bg-sage-700"><Check className="h-6 w-6" aria-hidden />{t("Mark as Taken", "ले लिया")}</button>
+              <button onClick={snooze} className="btn-secondary w-full"><Clock className="h-6 w-6" aria-hidden />{t("Snooze (5 mins)", "स्नूज़ (5 मिनट)")}</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

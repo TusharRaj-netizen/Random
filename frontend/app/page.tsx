@@ -15,6 +15,7 @@ import {
   HeartPulse,
   BarChart3,
   Landmark,
+  ShoppingCart,
 } from "lucide-react";
 import { useLanguage } from "@/lib/language";
 import { getHealthTips, type HealthTip } from "@/lib/api";
@@ -59,6 +60,13 @@ export default function HomePage() {
       title: t("Price Tracker", "दाम ट्रैकर"),
       desc: t("Compare & track medicine prices", "दवा दाम तुलनें व ट्रैक करें"),
       color: "bg-indigo-600",
+    },
+    {
+      href: "/order-planner",
+      icon: ShoppingCart,
+      title: t("Recurring Refill Planner", "आवर्ती रिफिल प्लानर"),
+      desc: t("Build recurring order kit", "आवर्ती ऑर्डर बनाएँ"),
+      color: "bg-teal-600",
     },
     {
       href: "/reminders",

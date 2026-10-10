@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { MapPin, Phone, Navigation, Hospital, Pill, Star, RefreshCw, Clock } from "lucide-react";
+import { MapPin, Phone, Navigation, Hospital, Pill, Star, RefreshCw, Clock, Bike, Car, ChevronDown, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/lib/language";
-import { getNearbyFacilities, type NearbyFacility, type FacilityType } from "@/lib/api";
+import { getNearbyFacilities, getFareEstimates, type NearbyFacility, type FacilityType, type FareEstimate } from "@/lib/api";
 import { useUserLocation } from "@/lib/useUserLocation";
 
 type FilterKey = "all" | "jan_aushadhi" | "hospital" | "pharmacy";
@@ -29,6 +29,9 @@ export default function FacilitiesPage() {
   const [facilities, setFacilities] = useState<NearbyFacility[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [fareFac, setFareFac] = useState<string | null>(null);
+  const [fares, setFares] = useState<FareEstimate[]>([]);
+  const [fareLoading, setFareLoading] = useState(false);
 
   useEffect(() => {
     if (location.loading) return;
@@ -38,6 +41,12 @@ export default function FacilitiesPage() {
       .catch((e: Error) => setError(e.message))
       .finally(() => setLoading(false));
   }, [location.lat, location.lng, location.loading, filter]);
+
+  const toggleFares = (f: NearbyFacility) => {
+    if (fareFac === f.id) { setFareFac(null); setFares([]); return; }
+    setFareFac(f.id); setFareLoading(true);
+    getFareEstimates(f.distance_km).then((d) => setFares(d.fares)).catch(() => setFares([])).finally(() => setFareLoading(false));
+  };
 
   return (
     <div className="space-y-5 animate-fade-in">
@@ -107,7 +116,32 @@ export default function FacilitiesPage() {
                     <a href={f.maps_url} target="_blank" rel="noopener noreferrer" className="btn-primary text-base">
                       <Navigation className="h-5 w-5" aria-hidden />{t("Navigate", "नेविगेट")} 📍
                     </a>
+                    <button onClick={() => toggleFares(f)} className="btn-secondary text-base">
+                      <Bike className="h-5 w-5" aria-hidden />{t("Ride Estimate", "किराया")}{fareFac === f.id ? <ChevronDown className="h-4 w-4 rotate-180" aria-hidden /> : <ChevronDown className="h-4 w-4" aria-hidden />}
+                    </button>
                   </div>
+                  {fareFac === f.id && (
+                    <div className="mt-3 animate-fade-in rounded-2xl bg-gray-50 p-3">
+                      {fareLoading ? (
+                        <p className="text-center text-sm text-gray-500">{t("Estimating fares...", "किराया अनुमानित हो रहा है...")}</p>
+                      ) : (
+                        <div className="space-y-2">
+                          {fares.map((fr) => (
+                            <div key={fr.type} className="flex items-center justify-between">
+                              <span className="flex items-center gap-2 text-base text-gray-700">
+                                {fr.type === "bike" ? <Bike className="h-5 w-5 text-sky-500" aria-hidden /> : fr.type === "auto" ? <Car className="h-5 w-5 text-amber-500" aria-hidden /> : <Car className="h-5 w-5 text-purple-500" aria-hidden />}
+                                {fr.label}
+                              </span>
+                              <span className="text-lg font-bold text-gray-800">₹{fr.estimated_fare}</span>
+                            </div>
+                          ))}
+                          <a href={`https://m.uber.com/ul/?action=setPickup&pickup[latitude]=${location.lat}&pickup[longitude]=${location.lng}&dropoff[latitude]=${f.lat}&dropoff[longitude]=${f.lng}`} target="_blank" rel="noopener noreferrer" className="btn-primary w-full text-base">
+                            <ExternalLink className="h-5 w-5" aria-hidden />{t("Book on Uber", "Uber पर बुक करें")}
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

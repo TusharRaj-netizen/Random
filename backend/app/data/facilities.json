@@ -1,0 +1,167 @@
+[
+  {
+    "id": "F001",
+    "name": "Jan Aushadhi Kendra - Pan Bazar",
+    "type": "jan_aushadhi",
+    "lat": 26.1869,
+    "lng": 91.7560,
+    "address": "Pan Bazar, Guwahati, Assam 781001",
+    "phone": "0361-2601234",
+    "open_hours": "09:00-21:00",
+    "is_24x7": false
+  },
+  {
+    "id": "F002",
+    "name": "Jan Aushadhi Kendra - Paltan Bazar",
+    "type": "jan_aushadhi",
+    "lat": 26.1820,
+    "lng": 91.7490,
+    "address": "Paltan Bazar, Guwahati, Assam 781008",
+    "phone": "0361-2605678",
+    "open_hours": "09:00-21:00",
+    "is_24x7": false
+  },
+  {
+    "id": "F003",
+    "name": "Jan Aushadhi Kendra - Maligaon",
+    "type": "jan_aushadhi",
+    "lat": 26.1690,
+    "lng": 91.7100,
+    "address": "Maligaon, Guwahati, Assam 781011",
+    "phone": "0361-2609012",
+    "open_hours": "09:00-20:00",
+    "is_24x7": false
+  },
+  {
+    "id": "F004",
+    "name": "Gauhati Medical College & Hospital (GMCH)",
+    "type": "hospital",
+    "lat": 26.1710,
+    "lng": 91.7400,
+    "address": "Bhangagarh, Guwahati, Assam 781032",
+    "phone": "0361-2528100",
+    "open_hours": "24x7",
+    "is_24x7": true
+  },
+  {
+    "id": "F005",
+    "name": "Guwahati Civil Hospital",
+    "type": "hospital",
+    "lat": 26.1905,
+    "lng": 91.7500,
+    "address": "Lakhtokia, Guwahati, Assam 781001",
+    "phone": "0361-2540001",
+    "open_hours": "24x7",
+    "is_24x7": true
+  },
+  {
+    "id": "F006",
+    "name": "Apollo Clinic Guwahati",
+    "type": "hospital",
+    "lat": 26.1750,
+    "lng": 91.7600,
+    "address": "GS Road, Bhangagarh, Guwahati, Assam 781005",
+    "phone": "0361-2450000",
+    "open_hours": "08:00-20:00",
+    "is_24x7": false
+  },
+  {
+    "id": "F007",
+    "name": "GNRC Hospitals Six Mile",
+    "type": "hospital",
+    "lat": 26.1530,
+    "lng": 91.7800,
+    "address": "Six Mile, Guwahati, Assam 781022",
+    "phone": "0361-2332000",
+    "open_hours": "24x7",
+    "is_24x7": true
+  },
+  {
+    "id": "F008",
+    "name": "PHC Basistha",
+    "type": "hospital",
+    "lat": 26.1450,
+    "lng": 91.7900,
+    "address": "Basistha, Guwahati, Assam 781029",
+    "phone": "0361-2341001",
+    "open_hours": "08:00-17:00",
+    "is_24x7": false
+  },
+  {
+    "id": "F009",
+    "name": "MedPlus Pharmacy - Paltan Bazar",
+    "type": "pharmacy",
+    "lat": 26.1830,
+    "lng": 91.7495,
+    "address": "Paltan Bazar, Guwahati, Assam 781008",
+    "phone": "1800-208-2444",
+    "open_hours": "08:00-22:00",
+    "is_24x7": false
+  },
+  {
+    "id": "F010",
+    "name": "MedPlus Pharmacy - Six Mile",
+    "type": "pharmacy",
+    "lat": 26.1540,
+    "lng": 91.7820,
+    "address": "Six Mile, Guwahati, Assam 781022",
+    "phone": "1800-208-2444",
+    "open_hours": "08:00-22:00",
+    "is_24x7": false
+  },
+  {
+    "id": "F011",
+    "name": "Apollo Pharmacy - GS Road",
+    "type": "pharmacy",
+    "lat": 26.1760,
+    "lng": 91.7610,
+    "address": "GS Road, Guwahati, Assam 781005",
+    "phone": "0361-2450100",
+    "open_hours": "08:00-22:00",
+    "is_24x7": false
+  },
+  {
+    "id": "F012",
+    "name": "24x7 Chemist - Dispur",
+    "type": "chemist_24x7",
+    "lat": 26.1440,
+    "lng": 91.7760,
+    "address": "Dispur, Guwahati, Assam 781006",
+    "phone": "0361-2223333",
+    "open_hours": "24x7",
+    "is_24x7": true
+  },
+  {
+    "id": "F013",
+    "name": "24x7 Chemist - Fancy Bazar",
+    "type": "chemist_24x7",
+    "lat": 26.1790,
+    "lng": 91.7430,
+    "address": "Fancy Bazar, Guwahati, Assam 781001",
+    "phone": "0361-2445555",
+    "open_hours": "24x7",
+    "is_24x7": true
+  },
+  {
+    "id": "F014",
+    "name": "Neighborhood Pharmacy - Chandmari",
+    "type": "pharmacy",
+    "lat": 26.1870,
+    "lng": 91.7720,
+    "address": "Chandmari, Guwahati, Assam 781021",
+    "phone": "0361-2551122",
+    "open_hours": "09:00-21:00",
+    "is_24x7": false
+  },
+  {
+    "id": "F015",
+    "name": "Ayushman Bharat Wellness Centre - Sarusajai",
+    "type": "hospital",
+    "lat": 26.1350,
+    "lng": 91.7700,
+    "address": "Sarusajai, Guwahati, Assam 781040",
+    "phone": "0361-2331400",
+    "open_hours": "08:00-17:00",
+    "is_24x7": false
+  }
+]

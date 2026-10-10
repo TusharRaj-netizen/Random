@@ -10,16 +10,18 @@ from fastapi.responses import RedirectResponse
 
 from app import __version__
 from app.config import settings
-from app.routers import chat, health, medicines, reminders
+from app.routers import audit, chat, facilities, health, market, medicines, reminders, schemes
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup: pre-load catalogue and tips caches.
-    from app.services import health_tips, janaushadhi
+    # Startup: pre-load catalogue, tips, facilities and schemes caches.
+    from app.services import facilities, health_tips, janaushadhi, schemes
 
     janaushadhi.load_medicines()
     health_tips.load_tips()
+    facilities.load_facilities()
+    schemes.load_schemes()
     yield
     # Shutdown: nothing to clean for the in-memory store.
 
@@ -69,6 +71,10 @@ app.include_router(chat.router)
 app.include_router(medicines.router)
 app.include_router(reminders.router)
 app.include_router(health.router)
+app.include_router(facilities.router)
+app.include_router(market.router)
+app.include_router(schemes.router)
+app.include_router(audit.router)
 
 
 if __name__ == "__main__":

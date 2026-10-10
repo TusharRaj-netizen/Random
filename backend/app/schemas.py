@@ -156,6 +156,114 @@ class HealthCheck(BaseModel):
 ChatRequest.model_rebuild()
 
 
+# ---------------------------------------------------------------------------
+# Feature 1: Facilities (hospitals, pharmacies, Jan-Aushadhi Kendras)
+# ---------------------------------------------------------------------------
+class FacilityType(str, Enum):
+    hospital = "hospital"
+    pharmacy = "pharmacy"
+    jan_aushadhi = "jan_aushadhi"
+    chemist_24x7 = "chemist_24x7"
+
+
+class Facility(BaseModel):
+    id: str
+    name: str
+    type: FacilityType
+    lat: float
+    lng: float
+    address: str
+    phone: Optional[str] = None
+    open_hours: Optional[str] = None
+    is_24x7: bool = False
+
+
+class NearbyFacility(Facility):
+    distance_km: float
+    distance_label: str
+    maps_url: str
+
+
+class NearbyFacilitiesResponse(BaseModel):
+    lat: float
+    lng: float
+    filter: str
+    count: int
+    facilities: List[NearbyFacility]
+
+
+# ---------------------------------------------------------------------------
+# Feature 3: Medicine market price comparison & fluctuation tracker
+# ---------------------------------------------------------------------------
+class MarketMedicine(BaseModel):
+    id: str
+    brand_name: str
+    salt_composition: str
+    manufacturer: str
+    dosage_form: str
+
+
+class PricePoint(BaseModel):
+    medicine_id: str
+    recorded_date: str
+    source: str
+    mrp: float
+    selling_price: float
+
+
+class CurrentPrice(BaseModel):
+    source: str
+    selling_price: float
+    mrp: float
+    is_jan_aushadhi: bool = False
+    savings_vs_highest: Optional[float] = None
+
+
+class FluctuationResponse(BaseModel):
+    medicine: MarketMedicine
+    nppa_ceiling_price: float
+    current_prices: List[CurrentPrice]
+    history: List[PricePoint]
+    jan_aushadhi_monthly_savings: float
+
+
+class MarketMedicineListResponse(BaseModel):
+    count: int
+    medicines: List[MarketMedicine]
+
+
+# ---------------------------------------------------------------------------
+# Feature 4: Government healthcare schemes for seniors
+# ---------------------------------------------------------------------------
+class GovScheme(BaseModel):
+    id: str
+    name_en: str
+    name_hi: str
+    category: str
+    benefit_summary_en: str
+    benefit_summary_hi: str
+    eligibility_en: str
+    eligibility_hi: str
+    official_link: str
+    icon: str
+
+
+class SchemesResponse(BaseModel):
+    count: int
+    schemes: List[GovScheme]
+
+
+# ---------------------------------------------------------------------------
+# Feature 5: Cline assistant audit workflows
+# ---------------------------------------------------------------------------
+class AuditResult(BaseModel):
+    workflow: str
+    status: str
+    summary: str
+    details: List[str] = Field(default_factory=list)
+    timestamp: datetime = Field(default_factory=datetime.utcnow)
+
+
 __all__ = [
     "MessageRole",
     "ChatMessage",
@@ -175,4 +283,16 @@ __all__ = [
     "UserProfile",
     "MedicineDetailResponse",
     "HealthCheck",
+    "FacilityType",
+    "Facility",
+    "NearbyFacility",
+    "NearbyFacilitiesResponse",
+    "MarketMedicine",
+    "PricePoint",
+    "CurrentPrice",
+    "FluctuationResponse",
+    "MarketMedicineListResponse",
+    "GovScheme",
+    "SchemesResponse",
+    "AuditResult",
 ]

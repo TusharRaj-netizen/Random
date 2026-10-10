@@ -1,0 +1,50 @@
+[
+  {
+    "id": "ayushman-pmjay",
+    "name_en": "Ayushman Bharat PM-JAY",
+    "name_hi": "आयुष्मान भारत पीएम-जय",
+    "category": "Health Insurance",
+    "benefit_summary_en": "Free health cover up to Rs.5 lakh per family per year for secondary and tertiary hospitalisation. Since 2024, all senior citizens aged 70+ get this cover regardless of income.",
+    "benefit_summary_hi": "माध्यमिक और तृतीयक अस्पताल भर्ती के लिए प्रति परिवार प्रति वर्ष ₹5 लाख तक का मुफ्त स्वास्थ्य कवर। 2024 से 70+ वर्ष के सभी बुजुर्ग, आय की परवाह किए बिना, इसका लाभ पाते हैं।",
+    "eligibility_en": "All senior citizens aged 70 years or above (regardless of income). Also eligible low-income families as per SECC 2011 data.",
+    "eligibility_hi": "70 वर्ष या उससे अधिक आयु के सभी बुजुर्ग (आय की परवाह किए बिना)। साथ ही SECC 2011 के अनुसार कम आय वाले परिवार भी पात्र।",
+    "official_link": "https://beneficiary.nha.gov.in",
+    "icon": "shield-plus"
+  },
+  {
+    "id": "rvy",
+    "name_en": "Rashtriya Vayoshri Yojana (RVY)",
+    "name_hi": "राष्ट्रीय वयोश्री योजना",
+    "category": "Assisted Living Devices",
+    "benefit_summary_en": "Free assisted-living physical devices such as hearing aids, walking sticks, wheelchairs, spectacles, and dentures for BPL and low-income seniors.",
+    "benefit_summary_hi": "बीपीएल और कम आय वाले बुजुर्गों के लिए मुफ्त सहायक उपकरण — श्रवण यंत्र, लाठी, व्हीलचेयर, चश्मा और डेंचर।",
+    "eligibility_en": "Senior citizens aged 60+ belonging to BPL category. Priority to those with age-related infirmities/disabilities.",
+    "eligibility_hi": "60+ वर्ष के बीपीएल वर्ग के बुजुर्ग। आयु संबंधी अक्षमता/विकलांगता वालों को प्राथमिकता।",
+    "official_link": "https://socialjustice.gov.in/schemes/rashtriya-vayoshri-yojana",
+    "icon": "wheelchair"
+  },
+  {
+    "id": "pmvvy",
+    "name_en": "Pradhan Mantri Vaya Vandana Yojana (PMVVY)",
+    "name_hi": "प्रधानमंत्री वय वंदना योजना",
+    "category": "Pension Security",
+    "benefit_summary_en": "Guaranteed pension security scheme offering assured return/pension for 10 years to senior citizens aged 60+.",
+    "benefit_summary_hi": "60+ वर्ष के बुजुर्गों के लिए 10 वर्ष की गारंटीड पेंशन/आश्वासित रिटर्न योजना।",
+    "eligibility_en": "Indian citizens aged 60 years or above. Minimum purchase price Rs.1,000 (max Rs.10 lakh family pension).",
+    "eligibility_hi": "60 वर्ष या अधिक आयु के भारतीय नागरिक। न्यूनतम खरीद मूल्य ₹1,000 (अधिकतम ₹10 लाख परिवार पेंशन)।",
+    "official_link": "https://www.licindia.in/Products/Pension-Plans/Pradhan-Mantri-Vaya-Vandana-Yojana",
+    "icon": "landmark"
+  },
+  {
+    "id": "nphce",
+    "name_en": "National Programme for Health Care of the Elderly (NPHCE)",
+    "name_hi": "बुजुर्गों के स्वास्थ्य देखभाल का राष्ट्रीय कार्यक्रम",
+    "category": "Geriatric Healthcare",
+    "benefit_summary_en": "Dedicated geriatric OPD and geriatric care services at district hospitals, CHCs and PHCs. Free consultation and medicines for senior citizens.",
+    "benefit_summary_hi": "ज़िला अस्पतालों, सीएचसी और पीएचसी में समर्पित जेरियाट्रिक ओपीडी और बुजुर्ग देखभाल सेवाएँ। बुजुर्गों के लिए मुफ्त परामर्श और दवाएँ।",
+    "eligibility_en": "All senior citizens aged 60 years and above. Available at identified district hospitals nationwide.",
+    "eligibility_hi": "60 वर्ष और उससे अधिक आयु के सभी बुजुर्ग। देशभर के चिह्नित ज़िला अस्पतालों में उपलब्ध।",
+    "official_link": "https://nphce.nhp.gov.in",
+    "icon": "stethoscope"
+  }
+]

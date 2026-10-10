@@ -1,0 +1,27 @@
+{
+  "files.autoSave": "afterDelay",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.tabSize": 2,
+  "python.defaultInterpreterPath": "${workspaceFolder}/backend/.venv/bin/python",
+  "python.terminal.activateEnvironment": true,
+  "python.analysis.extraPaths": ["${workspaceFolder}/backend"],
+  "tailwindCSS.experimental.classRegex": [
+    ["className=\"([^\"]*)\"", "'([^']*)'"]
+  ],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "emmet.includeLanguages": {
+    "typescript": "html",
+    "typescriptreact": "html"
+  },
+  "search.useIgnoreFiles": true,
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/.venv": true,
+    "**/__pycache__": true,
+    "**/.next": true
+  },
+  "liveServer.settings.port": 3000
+}

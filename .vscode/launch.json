@@ -1,0 +1,45 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: FastAPI Backend",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": ["app.main:app", "--reload", "--host", "127.0.0.1", "--port", "8000"],
+      "cwd": "${workspaceFolder}/backend",
+      "envFile": "${workspaceFolder}/backend/.env",
+      "python": "${workspaceFolder}/backend/.venv/bin/python",
+      "jinja": true,
+      "justMyCode": true,
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Next.js: Frontend (debug)",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "cwd": "${workspaceFolder}/frontend",
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**", "**/node_modules/**"]
+    },
+    {
+      "name": "Pytest: Run All Backend Tests",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["-v"],
+      "cwd": "${workspaceFolder}/backend",
+      "python": "${workspaceFolder}/backend/.venv/bin/python",
+      "console": "integratedTerminal"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Full Stack (Backend + Frontend)",
+      "configurations": ["Python: FastAPI Backend", "Next.js: Frontend (debug)"],
+      "stopAll": true
+    }
+  ]
+}

@@ -19,7 +19,28 @@ and read bilingual (English/Hindi) **daily health tips**.
 See [`backend/README.md`](./backend/README.md) and
 [`frontend/README.md`](./frontend/README.md) for per-project setup.
 
-## Quick start (full stack)
+## Quick start (in VS Code)
+
+Open the workspace file in VS Code for a one-click full-stack run:
+
+```
+code vridh-mitra.code-workspace
+```
+
+Then:
+
+1. **Install**: Run the task `Install All Dependencies` (Terminal → Run Task…)
+2. **Run both**: Press `F5` (select **"Full Stack (Backend + Frontend)"**) — or
+   run the task `Run Both (Backend + Frontend)`
+3. Open <http://localhost:3000>
+
+| Shortcut | Action |
+|---|---|
+| `Ctrl/Cmd + Shift + B` | Build tasks (install deps / build frontend) |
+| `F5` | Debug: "Full Stack" runs backend + frontend together |
+| `Terminal → Run Task…` | Pick any task (backend, frontend, tests, open browser) |
+
+## Quick start (full stack, CLI)
 
 ```bash
 # 1) Backend

@@ -1,0 +1,90 @@
+{
+  "folders": [
+    { "path": ".", "name": "Vridh-Mitra" },
+    { "path": "backend", "name": "Backend (FastAPI)" },
+    { "path": "frontend", "name": "Frontend (Next.js)" }
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "${workspaceFolder}/backend/.venv/bin/python",
+    "python.terminal.activateEnvironment": true,
+    "files.autoSave": "afterDelay",
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "search.useIgnoreFiles": true,
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/.venv": true,
+      "**/__pycache__": true,
+      "**/.next": true
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+      "bradlc.vscode-tailwindcss",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode"
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Run Backend (FastAPI)",
+        "type": "shell",
+        "command": ". .venv/bin/activate && uvicorn app.main:app --reload --host 127.0.0.1 --port 8000",
+        "options": { "cwd": "${workspaceFolder}/backend" },
+        "isBackground": true,
+        "presentation": { "reveal": "always", "panel": "dedicated", "group": "vridh-mitra" },
+        "group": "test"
+      },
+      {
+        "label": "Run Frontend (Next.js)",
+        "type": "shell",
+        "command": "npm run dev",
+        "options": { "cwd": "${workspaceFolder}/frontend" },
+        "isBackground": true,
+        "presentation": { "reveal": "always", "panel": "dedicated", "group": "vridh-mitra" },
+        "group": "test"
+      },
+      {
+        "label": "Run Both (Backend + Frontend)",
+        "dependsOn": ["Run Backend (FastAPI)", "Run Frontend (Next.js)"],
+        "group": "test"
+      }
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Python: FastAPI Backend",
+        "type": "debugpy",
+        "request": "launch",
+        "module": "uvicorn",
+        "args": ["app.main:app", "--reload", "--host", "127.0.0.1", "--port", "8000"],
+        "cwd": "${workspaceFolder}/backend",
+        "envFile": "${workspaceFolder}/backend/.env",
+        "python": "${workspaceFolder}/backend/.venv/bin/python",
+        "console": "integratedTerminal"
+      },
+      {
+        "name": "Next.js: Frontend (debug)",
+        "type": "node",
+        "request": "launch",
+        "runtimeExecutable": "npm",
+        "runtimeArgs": ["run", "dev"],
+        "cwd": "${workspaceFolder}/frontend",
+        "console": "integratedTerminal"
+      }
+    ],
+    "compounds": [
+      {
+        "name": "Full Stack (Backend + Frontend)",
+        "configurations": ["Python: FastAPI Backend", "Next.js: Frontend (debug)"],
+        "stopAll": true
+      }
+    ]
+  }
+}

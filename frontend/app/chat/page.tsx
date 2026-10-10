@@ -165,7 +165,10 @@ export default function ChatPage() {
           </div>
           {sttSupported && (
             <button type="button" onClick={() => (listening ? stopMic() : start())} aria-pressed={listening} className={`btn ${listening ? "bg-red-600 text-white" : "btn-secondary"}`} title={t("Voice input", "आवाज़ से लिखें")}>
-              <Mic className="h-6 w-6" aria-hidden />
+              <span className="relative flex h-6 w-6 items-center justify-center">
+                <Mic className="h-6 w-6" aria-hidden />
+                {listening && <span className="absolute inset-0 animate-ping rounded-full bg-red-400 opacity-40" />}
+              </span>
             </button>
           )}
           <button type="submit" disabled={loading || !input.trim()} className="btn-primary">

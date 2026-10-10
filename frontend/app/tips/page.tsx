@@ -72,6 +72,25 @@ export default function TipsPage() {
               </section>
               <div className="card flex items-start gap-3 p-4"><Clock className="mt-0.5 h-6 w-6 shrink-0 text-brand-500" aria-hidden /><div><h3 className="text-base font-bold text-gray-700">{t("Best Timing", "सर्वोत्तम समय")}</h3><p className="text-base text-gray-600">{insight.timing_advice}</p></div></div>
               <div className="card flex items-start gap-3 p-4"><AlertTriangle className="mt-0.5 h-6 w-6 shrink-0 text-amber-500" aria-hidden /><div><h3 className="text-base font-bold text-gray-700">{t("Food Interactions", "खाद्य अंतःक्रिया")}</h3><p className="text-base text-gray-600">{insight.food_interactions}</p></div></div>
+
+              {/* Week 1 vs Month 1 timeline */}
+              {insight.week1_vs_month1 && (
+                <div className="card p-4">
+                  <h3 className="mb-2 flex items-center gap-1 text-base font-bold text-gray-700"><Clock className="h-5 w-5 text-sky-500" aria-hidden />{t("What to Expect: Week 1 vs Month 1", "क्या उम्मीद करें: सप्ताह 1 बनाम माह 1")}</h3>
+                  <p className="text-base text-gray-600">{insight.week1_vs_month1}</p>
+                </div>
+              )}
+
+              {/* Senior precautions */}
+              {insight.senior_precautions && (
+                <div className="card flex items-start gap-3 border-2 border-amber-200 bg-amber-50 p-4">
+                  <AlertTriangle className="mt-0.5 h-6 w-6 shrink-0 text-amber-600" aria-hidden />
+                  <div>
+                    <h3 className="text-base font-bold text-amber-800">{t("Senior Precautions", "वरिष्ठ सावधानियाँ")}</h3>
+                    <p className="text-base text-amber-700">{insight.senior_precautions}</p>
+                  </div>
+                </div>
+              )}
               <section className="card p-4">
                 <h3 className="mb-3 flex items-center gap-1 text-lg font-bold text-gray-700"><Users className="h-5 w-5 text-purple-500" aria-hidden />{t("Patient Experiences & Efficacy", "रोगी अनुभव व प्रभावकारिता")}</h3>
                 <div className="space-y-3">

@@ -299,6 +299,8 @@ class MedicineInsight(BaseModel):
     lifestyle_tips: List[LifestyleTip]
     timing_advice: str
     food_interactions: str
+    week1_vs_month1: str = ""
+    senior_precautions: str = ""
     patient_experiences: List[PatientExperience]
 
 

@@ -12,9 +12,12 @@
     ],
     "timing_advice": "Best taken in the morning before breakfast",
     "food_interactions": "Avoid grapefruit, high-sodium foods, and excessive coffee",
+    "week1_vs_month1": "Week 1: You may feel mild dizziness or fatigue as your body adjusts. Month 1: BP should stabilize. Most patients see full effect by 4-6 weeks.",
+    "senior_precautions": "Rise slowly from sitting/lying to prevent dizziness. Stay hydrated. Monitor BP weekly. Avoid hot baths right after taking the medicine.",
     "patient_experiences": [
       {"patient": "Mohan, 65", "feedback": "BP stabilized within 2 weeks. Had mild dizziness in first 3 days which went away.", "effectiveness": "High"},
-      {"patient": "Kamala, 72", "feedback": "Take it after breakfast — taking empty stomach caused nausea.", "effectiveness": "High"}
+      {"patient": "Kamala, 72", "feedback": "Take it after breakfast — taking on empty stomach caused nausea. Always keep a BP log.", "effectiveness": "High"},
+      {"patient": "Rajesh, 68", "feedback": "Never skip even if you feel fine. I skipped for 2 days and BP shot up to 180.", "effectiveness": "High"}
     ]
   },
   {
@@ -29,10 +32,13 @@
       {"type": "dont", "text": "Do not skip meals after taking Metformin — risk of low sugar"}
     ],
     "timing_advice": "Take with breakfast and dinner, never on empty stomach",
-    "food_interactions": "Limit sugary foods. Take B12 supplement if on long-term use",
+    "food_interactions": "Limit sugary foods. Take B12 supplement if on long-term use. Avoid excessive dairy with high doses.",
+    "week1_vs_month1": "Week 1: Mild stomach upset or loose motions common. Take after food. Month 1: Blood sugar levels begin to drop noticeably. HbA1c improves over 3 months.",
+    "senior_precautions": "Stay hydrated — kidney function should be monitored annually. Watch for signs of low blood sugar if also on glimepiride. B12 levels may drop with long-term use.",
     "patient_experiences": [
       {"patient": "Ramesh, 68", "feedback": "Sugar levels came down in 3-4 weeks. Mild stomach issues initially, resolved by taking after food.", "effectiveness": "High"},
-      {"patient": "Lakshmi, 70", "feedback": "Doctor switched me to SR version — much gentler on stomach.", "effectiveness": "Moderate"}
+      {"patient": "Lakshmi, 70", "feedback": "Doctor switched me to SR version — much gentler on stomach. Best decision.", "effectiveness": "Moderate"},
+      {"patient": "Suresh, 75", "feedback": "Take it with dinner — never skip. My fasting sugar went from 180 to 120 in 2 months.", "effectiveness": "High"}
     ]
   },
   {
@@ -47,10 +53,13 @@
       {"type": "dont", "text": "Avoid spicy food, excess tea/coffee, and late dinners"}
     ],
     "timing_advice": "30 minutes before breakfast, once daily",
-    "food_interactions": "Avoid alcohol, spicy foods, citrus. Long-term use may reduce magnesium",
+    "food_interactions": "Avoid alcohol, spicy foods, citrus. Long-term use may reduce magnesium and calcium absorption.",
+    "week1_vs_month1": "Week 1: Acidity relief usually within 2-3 days. Month 1: Complete relief from heartburn and regurgitation. Healing of esophagus takes 4-8 weeks.",
+    "senior_precautions": "Long-term use may weaken bones — ensure calcium intake. Monitor magnesium levels if on diuretics. Avoid prolonged use without doctor review.",
     "patient_experiences": [
       {"patient": "Suresh, 67", "feedback": "Acidity reduced from day 3. Take it early morning before tea for best results.", "effectiveness": "High"},
-      {"patient": "Geeta, 75", "feedback": "Was taking for 6 months. Doctor advised calcium supplement alongside.", "effectiveness": "High"}
+      {"patient": "Geeta, 75", "feedback": "Was taking for 6 months. Doctor advised calcium supplement alongside. No issues since.", "effectiveness": "High"},
+      {"patient": "Ahmed, 70", "feedback": "Never skip the timing — 30 min before food is key. Works like magic if taken correctly.", "effectiveness": "High"}
     ]
   },
   {
@@ -65,10 +74,13 @@
       {"type": "dont", "text": "Avoid grapefruit juice — increases side effects"}
     ],
     "timing_advice": "Best taken at night before sleeping",
-    "food_interactions": "Avoid grapefruit juice. Limit fried foods and red meat",
+    "food_interactions": "Avoid grapefruit juice completely. Limit fried foods and red meat. Moderate alcohol only.",
+    "week1_vs_month1": "Week 1: Usually no symptoms — cholesterol medicine works silently. Month 1: Lipid profile may start improving. Full effect seen at 6-8 weeks.",
+    "senior_precautions": "Report any unexplained muscle pain or weakness immediately — rare but serious side effect. Annual liver function tests recommended. Stay hydrated.",
     "patient_experiences": [
-      {"patient": "Prakash, 69", "feedback": "Cholesterol dropped in 8 weeks. Had mild muscle soreness initially that resolved.", "effectiveness": "High"},
-      {"patient": "Vimala, 73", "feedback": "Take with a small glass of water at night. Works well with daily walk.", "effectiveness": "High"}
+      {"patient": "Prakash, 69", "feedback": "Cholesterol dropped in 8 weeks. Had mild muscle soreness initially that resolved on its own.", "effectiveness": "High"},
+      {"patient": "Vimala, 73", "feedback": "Take with a small glass of water at night. Works well with daily walk.", "effectiveness": "High"},
+      {"patient": "Krishnan, 71", "feedback": "My LDL went from 180 to 110 in 3 months. No side effects at all. Take it religiously.", "effectiveness": "High"}
     ]
   },
   {
@@ -83,10 +95,13 @@
       {"type": "dont", "text": "Avoid alcohol during and 48 hours after course"}
     ],
     "timing_advice": "Take at evenly spaced intervals with food",
-    "food_interactions": "Take with meals. Avoid alcohol. Add yogurt/probiotics",
+    "food_interactions": "Take with meals. Avoid alcohol. Add yogurt/probiotics to prevent gut issues. Avoid dairy within 2 hours of dose.",
+    "week1_vs_month1": "Week 1: Infection symptoms (fever, pain) usually clear in 3-5 days. Complete the full course. Month 1: Gut flora may need rebuilding with probiotics.",
+    "senior_precautions": "Check for penicillin allergy before starting. Monitor for diarrhea — if severe or bloody, contact doctor immediately. Stay hydrated.",
     "patient_experiences": [
-      {"patient": "Bhaskar, 64", "feedback": "Infection cleared in 5 days. Had some loose motions, yogurt helped.", "effectiveness": "High"},
-      {"patient": "Meena, 71", "feedback": "Always take after food — empty stomach caused severe nausea.", "effectiveness": "High"}
+      {"patient": "Bhaskar, 64", "feedback": "Infection cleared in 5 days. Had some loose motions, yogurt helped a lot.", "effectiveness": "High"},
+      {"patient": "Meena, 71", "feedback": "Always take after food — empty stomach caused severe nausea and vomiting.", "effectiveness": "High"},
+      {"patient": "Joseph, 69", "feedback": "Completed full 7-day course even though I felt fine by day 3. Doctor said that's the right way.", "effectiveness": "High"}
     ]
   },
   {
@@ -101,10 +116,13 @@
       {"type": "dont", "text": "Avoid excessive grapefruit consumption"}
     ],
     "timing_advice": "Take once daily, morning or evening with food",
-    "food_interactions": "Limit grapefruit. Moderate calcium-rich foods are fine",
+    "food_interactions": "Limit grapefruit. Moderate calcium-rich foods are fine. Avoid high-sodium processed foods.",
+    "week1_vs_month1": "Week 1: May notice mild ankle swelling or headache. These usually subside. Month 1: BP should be well-controlled with consistent dosing.",
+    "senior_precautions": "Rise slowly from sitting position — amlodipine can cause dizziness. If ankle swelling persists, ask doctor about dose adjustment. Stay hydrated in hot weather.",
     "patient_experiences": [
-      {"patient": "Anil, 66", "feedback": "BP well controlled. Had mild ankle swelling initially, resolved naturally.", "effectiveness": "High"},
-      {"patient": "Sarla, 74", "feedback": "Taking for 2 years. Works well with morning walk.", "effectiveness": "High"}
+      {"patient": "Anil, 66", "feedback": "BP well controlled. Had mild ankle swelling initially, resolved naturally in 2 weeks.", "effectiveness": "High"},
+      {"patient": "Sarla, 74", "feedback": "Taking for 2 years. Works well with morning walk. No side effects.", "effectiveness": "High"},
+      {"patient": "Dinesh, 72", "feedback": "Doctor reduced dose from 10mg to 5mg after swelling. Much better now. Always report side effects.", "effectiveness": "Moderate"}
     ]
   }
 ]

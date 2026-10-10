@@ -409,6 +409,8 @@ export interface MedicineInsight {
   lifestyle_tips: LifestyleTip[];
   timing_advice: string;
   food_interactions: string;
+  week1_vs_month1: string;
+  senior_precautions: string;
   patient_experiences: PatientExperience[];
 }
 

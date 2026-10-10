@@ -16,11 +16,10 @@ export function useSpeech() {
   const speak = useCallback((text: string, lang: string = "en-IN") => {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
     window.speechSynthesis.cancel();
-    // Strip emoji and bullet markers for cleaner speech.
     const clean = text.replace(/[\u{1F000}-\u{1FFFF}\u2600-\u27BF]/gu, "").replace(/[•]/g, ", ");
     const utter = new SpeechSynthesisUtterance(clean);
     utter.lang = lang;
-    utter.rate = 0.9; // slower for senior ears
+    utter.rate = 0.9;
     utter.pitch = 1;
     utter.onstart = () => setSpeaking(true);
     utter.onend = () => setSpeaking(false);
@@ -39,61 +38,107 @@ export function useSpeech() {
 }
 
 // ---------------------------------------------------------------------------
-// Speech-to-Text (webkitSpeechRecognition) for voice input
+// Speech-to-Text (SpeechRecognition / webkitSpeechRecognition) for voice input
 // ---------------------------------------------------------------------------
-interface SpeechRecognitionLike {
-  lang: string;
-  interimResults: boolean;
-  continuous: boolean;
-  onresult: ((event: any) => void) | null;
-  onerror: ((event: any) => void) | null;
-  onend: (() => void) | null;
-  start: () => void;
-  stop: () => void;
-}
+export type STTErrorType = "not-supported" | "permission-denied" | "network" | "no-speech" | "aborted" | null;
 
 export function useSpeechRecognition(onResult: (text: string) => void, lang: string = "en-IN") {
   const [listening, setListening] = useState(false);
   const [supported, setSupported] = useState(false);
-  const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
+  const [error, setError] = useState<STTErrorType>(null);
+  const recognitionRef = useRef<any>(null);
   const callbackRef = useRef(onResult);
   callbackRef.current = onResult;
+  const manualStopRef = useRef(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-    if (!SR) return;
+    if (!SR) {
+      setSupported(false);
+      setError("not-supported");
+      return;
+    }
     setSupported(true);
-    const rec: SpeechRecognitionLike = new SR();
+    setError(null);
+
+    const rec = new SR();
     rec.lang = lang;
     rec.interimResults = false;
     rec.continuous = false;
+    rec.maxAlternatives = 1;
+
     rec.onresult = (event: any) => {
       const transcript = Array.from(event.results)
         .map((r: any) => r[0].transcript)
-        .join(" ");
-      callbackRef.current(transcript);
+        .join(" ")
+        .trim();
+      if (transcript) {
+        callbackRef.current(transcript);
+      }
     };
-    rec.onerror = () => setListening(false);
-    rec.onend = () => setListening(false);
+
+    rec.onerror = (event: any) => {
+      const errType = event.error || "unknown";
+      if (errType === "not-allowed" || errType === "service-not-allowed") {
+        setError("permission-denied");
+      } else if (errType === "network") {
+        setError("network");
+      } else if (errType === "no-speech") {
+        setError("no-speech");
+      } else if (errType === "aborted") {
+        // User manually stopped — not a real error
+      }
+      setListening(false);
+    };
+
+    rec.onend = () => {
+      setListening(false);
+      // Auto-restart if we were listening and didn't manually stop
+      if (!manualStopRef.current && recognitionRef.current) {
+        try {
+          recognitionRef.current.start();
+          setListening(true);
+        } catch {
+          // Already started or can't restart
+        }
+      }
+    };
+
     recognitionRef.current = rec;
+
+    return () => {
+      manualStopRef.current = true;
+      try { rec.stop(); } catch { /* ignore */ }
+      recognitionRef.current = null;
+    };
   }, [lang]);
 
   const start = useCallback(() => {
     const rec = recognitionRef.current;
-    if (!rec) return;
+    if (!rec) {
+      setError("not-supported");
+      return;
+    }
+    manualStopRef.current = false;
+    setError(null);
     try {
       rec.start();
       setListening(true);
-    } catch {
-      setListening(false);
+    } catch (e: any) {
+      // If already started, try stopping first then starting
+      try { rec.stop(); } catch { /* ignore */ }
+      try { rec.start(); setListening(true); } catch { setListening(false); }
     }
   }, []);
 
   const stop = useCallback(() => {
-    recognitionRef.current?.stop();
+    manualStopRef.current = true;
+    try { recognitionRef.current?.stop(); } catch { /* ignore */ }
     setListening(false);
   }, []);
 
-  return { start, stop, listening, supported };
+  const clearError = useCallback(() => setError(null), []);
+
+  return { start, stop, listening, supported, error, clearError };
 }

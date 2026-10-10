@@ -107,3 +107,39 @@ body {
   background-color: #fdba74;
   border-radius: 9999px;
 }
+
+/* =============================================================
+   Senior Mode — 25% larger fonts, bigger touch targets, higher contrast
+   Toggled by the Eye button in the header. Persisted in localStorage.
+   ============================================================= */
+html.senior-mode {
+  font-size: 140%;
+}
+html.senior-mode body {
+  line-height: 1.85;
+}
+html.senior-mode .btn,
+html.senior-mode .btn-primary,
+html.senior-mode .btn-secondary,
+html.senior-mode .btn-ghost {
+  min-height: 4rem;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+}
+html.senior-mode .input-senior {
+  padding: 1rem 1.25rem;
+  font-size: 1.25rem;
+}
+html.senior-mode .chip {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+}
+html.senior-mode .card {
+  border-width: 2px;
+}
+html.senior-mode .section-title {
+  font-size: 1.75rem;
+}
+html.senior-mode header {
+  background: white;
+}

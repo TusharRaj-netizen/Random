@@ -59,9 +59,37 @@ export default function SosPage() {
 
   const sendEmergencySMS = (contact: EmergencyContact) => {
     const msg = lang === "hi"
-      ? encodeURIComponent("आपातकाल! मुझे मदद चाहिए। कृपया तुरंत संपर्क करें। - वृद्ध-मित्र ऐप")
-      : encodeURIComponent("EMERGENCY! I need help. Please contact me immediately. - Vridh-Mitra App");
+      ? encodeURIComponent("आपातकाल! मुझे मदद चाहिए। कृपया तुरंत संपर्क करें। - Cline AI ऐप")
+      : encodeURIComponent("EMERGENCY! I need help. Please contact me immediately. - Cline AI App");
     window.open(`https://wa.me/${contact.phone.replace(/[^\d]/g, "")}?text=${msg}`, "_blank");
+  };
+
+  // One-Tap Caregiver SOS with location
+  const [sosLocation, setSosLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const [sosSending, setSosSending] = useState(false);
+
+  const sendCaregiverSOS = () => {
+    setSosSending(true);
+    const sendMsg = (lat?: number, lng?: number) => {
+      const locPart = lat && lng ? ` 📍 Location: https://maps.google.com/?q=${lat},${lng}` : "";
+      const msg = lang === "hi"
+        ? encodeURIComponent(`आपातकाल SOS! मुझे मदद चाहिए।${locPart} - Cline AI ऐप`)
+        : encodeURIComponent(`EMERGENCY SOS! I need help.${locPart} - Cline AI App`);
+      // Send to first saved contact, or open generic WhatsApp
+      if (contacts.length > 0) {
+        window.open(`https://wa.me/${contacts[0].phone.replace(/[^\d]/g, "")}?text=${msg}`, "_blank");
+      } else {
+        window.open(`https://wa.me/?text=${msg}`, "_blank");
+      }
+      setSosSending(false);
+    };
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => { setSosLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude }); sendMsg(pos.coords.latitude, pos.coords.longitude); },
+        () => { sendMsg(); },
+        { enableHighAccuracy: true, timeout: 5000 }
+      );
+    } else { sendMsg(); }
   };
 
   return (
@@ -89,6 +117,22 @@ export default function SosPage() {
         </div>
         <span className="text-2xl font-black text-amber-600">112</span>
       </a>
+
+      {/* One-Tap Caregiver SOS with location */}
+      <button onClick={sendCaregiverSOS} disabled={sosSending} className="flex w-full items-center justify-between gap-3 rounded-3xl border-2 border-sage-400 bg-sage-600 px-5 py-5 text-white shadow-lg active:scale-[0.99] disabled:opacity-60" aria-label={t("Send SOS to Caregiver with Location", "देखभाल कर्ता को स्थान सहित SOS भेजें")}>
+        <div className="flex items-center gap-3">
+          <span className="relative flex h-14 w-14 items-center justify-center rounded-full bg-white text-sage-600">
+            <MessageCircle className="h-7 w-7" aria-hidden />
+            <span className="absolute inset-0 animate-pulse-ring rounded-full bg-sage-400" />
+          </span>
+          <div className="leading-tight text-left">
+            <p className="text-xl font-extrabold">{t("SOS to Caregiver", "देखभाल कर्ता को SOS")}</p>
+            <p className="text-sm text-sage-100">{t("One tap — sends WhatsApp with your location", "एक टैप — आपका स्थान सहित व्हाट्सएप भेजता है")}</p>
+          </div>
+        </div>
+        {sosSending ? <span className="text-sm animate-pulse">{t("Sending...", "भेज रहे...")}</span> : <MessageCircle className="h-8 w-8" aria-hidden />}
+      </button>
+      {sosLocation && <p className="text-sm text-sage-600">📍 {sosLocation.lat.toFixed(4)}, {sosLocation.lng.toFixed(4)}</p>}
 
       <section className="card p-5">
         <div className="mb-3 flex items-center justify-between gap-2">

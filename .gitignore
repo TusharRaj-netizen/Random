@@ -1,0 +1,19 @@
+# Editor / OS
+.DS_Store
+*.swp
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Node
+node_modules/
+.next/
+out/
+build/
+*.log
+
+# Test caches
+.pytest_cache/

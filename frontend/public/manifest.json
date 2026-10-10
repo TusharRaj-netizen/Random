@@ -1,0 +1,12 @@
+{
+  "name": "Vridh-Mitra | Jan-Aushadhi Healthcare Copilot",
+  "short_name": "वृद्ध-मित्र",
+  "description": "A senior-friendly healthcare copilot for Indian senior citizens.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffaf3",
+  "theme_color": "#ea580c",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

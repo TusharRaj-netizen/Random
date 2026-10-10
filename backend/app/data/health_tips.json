@@ -1,0 +1,74 @@
+[
+  {
+    "id": "tip-001",
+    "title": "Stay Hydrated",
+    "title_hindi": "पानी पिते रहें",
+    "category": "Daily Wellness",
+    "body": "Drink 6-8 glasses of water every day. Dehydration is common in seniors and can cause dizziness and confusion. Sip water regularly even if you don't feel thirsty.",
+    "body_hindi": "रोज़ 6-8 गिलास पानी पिएँ। बुज़ुर्गों में पानी की कमी से चक्कर और भ्रम हो सकता है। प्यास न लगे तब भी थोड़े-थोड़े पानी पीते रहें।",
+    "icon": "droplet"
+  },
+  {
+    "id": "tip-002",
+    "title": "Daily Walk",
+    "title_hindi": "रोज़ टहलें",
+    "category": "Fitness",
+    "body": "A 30-minute morning or evening walk keeps your heart, joints and mood healthy. Walk at a comfortable pace and wear supportive shoes.",
+    "body_hindi": "30 मिनट की सुबह या शाम की टहल दिल, जोड़ों और मिज़ाज को स्वस्थ रखती है। आराम से चलें और अच्छे जूते पहनें।",
+    "icon": "footprints"
+  },
+  {
+    "id": "tip-003",
+    "title": "Take Medicines On Time",
+    "title_hindi": "दवा समय पर लें",
+    "category": "Medication",
+    "body": "Take your medicines at the same time daily. Use a reminder box or the Vridh-Mitra reminders so you never miss a dose. Never stop a medicine without your doctor's advice.",
+    "body_hindi": "अपनी दवाएँ रोज़ एक ही समय पर लें। रिमाइंडर बॉक्स या वृद्ध-मित्र रिमाइंडर का उपयोग करें ताकि कोई खुराक न छूटे। डॉक्टर की सलाह के बिना दवा बंद न करें।",
+    "icon": "pill"
+  },
+  {
+    "id": "tip-004",
+    "title": "Eat Balanced Meals",
+    "title_hindi": "संतुलित भोजन करें",
+    "category": "Nutrition",
+    "body": "Include vegetables, fruits, dal, curd and whole grains. Limit salt, sugar and fried foods. Small frequent meals are easier to digest.",
+    "body_hindi": "सब्ज़ी, फल, दाल, दही और अनाज शामिल करें। नमक, चीनी और तले भोजन से बचें। थोड़े-थोड़े और बार-बार खाना पचाने में आसान होता है।",
+    "icon": "salad"
+  },
+  {
+    "id": "tip-005",
+    "title": "Check Blood Pressure Regularly",
+    "title_hindi": "नियमित बीपी जाँचें",
+    "category": "Heart Health",
+    "body": "Check your blood pressure at least once a week if you have hypertension. Keep a small diary of readings to share with your doctor.",
+    "body_hindi": "यदि बीपी बढ़ा है तो हफ़्ते में कम-से-कम एक बार जाँचें। रीडिंग की एक डायरी रखें ताकि डॉक्टर को दिखा सकें।",
+    "icon": "heart-pulse"
+  },
+  {
+    "id": "tip-006",
+    "title": "Save With Jan-Aushadhi",
+    "title_hindi": "जन औषधि से बचत करें",
+    "category": "Savings",
+    "body": "Jan-Aushadhi Kendras sell quality generic medicines at 50-90% lower prices. Ask your doctor to prescribe generic names to save money.",
+    "body_hindi": "जन औषधि केंद्र अच्छी क्वालिटी की जेनेरिक दवाएँ 50-90% कम दाम पर देते हैं। डॉक्टर से जेनेरिक नाम लिखवाकर पैसे बचाएँ।",
+    "icon": "piggy-bank"
+  },
+  {
+    "id": "tip-007",
+    "title": "Prevent Falls",
+    "title_hindi": "गिरने से बचें",
+    "category": "Safety",
+    "body": "Keep floors dry, use good lighting at night, and hold handrails on stairs. Wear well-fitting slippers. Falls are a major risk after 60.",
+    "body_hindi": "फर्श सूखी रखें, रात में अच्छी रोशनी रखें और सीढ़ियों पर रेल पकड़ें। ठीक जूते पहनें। 60 के बाद गिरना बड़ा खतरा है।",
+    "icon": "shield"
+  },
+  {
+    "id": "tip-008",
+    "title": "Stay Social & Active",
+    "title_hindi": "सामाजिक और सक्रिय रहें",
+    "category": "Mental Health",
+    "body": "Talk to family and friends, join a morning group, or learn something new. Staying connected keeps the mind sharp and mood positive.",
+    "body_hindi": "परिवार और दोस्तों से बात करें, सुबह के समूह में जुड़ें, या कुछ नया सीखें। जुड़ाव रहने से दिमाग़ तेज़ और मिज़ाज अच्छा रहता है।",
+    "icon": "users"
+  }
+]

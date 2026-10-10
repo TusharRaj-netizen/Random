@@ -1,0 +1,110 @@
+[
+  {
+    "medicine_id": "M02",
+    "condition": "Hypertension",
+    "condition_hi": "उच्च रक्तचाप",
+    "lifestyle_tips": [
+      {"type": "do", "text": "Take at the same time daily, preferably morning"},
+      {"type": "do", "text": "Reduce salt intake to less than 5g per day"},
+      {"type": "do", "text": "Walk 30 minutes daily for blood pressure control"},
+      {"type": "dont", "text": "Do not stop suddenly — may cause rebound hypertension"},
+      {"type": "dont", "text": "Avoid grapefruit juice, it can interact with BP medicines"}
+    ],
+    "timing_advice": "Best taken in the morning before breakfast",
+    "food_interactions": "Avoid grapefruit, high-sodium foods, and excessive coffee",
+    "patient_experiences": [
+      {"patient": "Mohan, 65", "feedback": "BP stabilized within 2 weeks. Had mild dizziness in first 3 days which went away.", "effectiveness": "High"},
+      {"patient": "Kamala, 72", "feedback": "Take it after breakfast — taking empty stomach caused nausea.", "effectiveness": "High"}
+    ]
+  },
+  {
+    "medicine_id": "M03",
+    "condition": "Type 2 Diabetes",
+    "condition_hi": "टाइप 2 मधुमेह",
+    "lifestyle_tips": [
+      {"type": "do", "text": "Always take with meals to reduce stomach upset"},
+      {"type": "do", "text": "Monitor blood sugar regularly, especially in first month"},
+      {"type": "do", "text": "Include fiber-rich vegetables and whole grains"},
+      {"type": "dont", "text": "Avoid alcohol — increases risk of lactic acidosis"},
+      {"type": "dont", "text": "Do not skip meals after taking Metformin — risk of low sugar"}
+    ],
+    "timing_advice": "Take with breakfast and dinner, never on empty stomach",
+    "food_interactions": "Limit sugary foods. Take B12 supplement if on long-term use",
+    "patient_experiences": [
+      {"patient": "Ramesh, 68", "feedback": "Sugar levels came down in 3-4 weeks. Mild stomach issues initially, resolved by taking after food.", "effectiveness": "High"},
+      {"patient": "Lakshmi, 70", "feedback": "Doctor switched me to SR version — much gentler on stomach.", "effectiveness": "Moderate"}
+    ]
+  },
+  {
+    "medicine_id": "M04",
+    "condition": "Acidity & GERD",
+    "condition_hi": "एसिडिटी व गर्ड",
+    "lifestyle_tips": [
+      {"type": "do", "text": "Take 30 minutes before breakfast"},
+      {"type": "do", "text": "Eat smaller meals, avoid lying down for 2 hours after eating"},
+      {"type": "do", "text": "Elevate head of bed if night-time acidity"},
+      {"type": "dont", "text": "Do not take with clopidogrel without consulting doctor"},
+      {"type": "dont", "text": "Avoid spicy food, excess tea/coffee, and late dinners"}
+    ],
+    "timing_advice": "30 minutes before breakfast, once daily",
+    "food_interactions": "Avoid alcohol, spicy foods, citrus. Long-term use may reduce magnesium",
+    "patient_experiences": [
+      {"patient": "Suresh, 67", "feedback": "Acidity reduced from day 3. Take it early morning before tea for best results.", "effectiveness": "High"},
+      {"patient": "Geeta, 75", "feedback": "Was taking for 6 months. Doctor advised calcium supplement alongside.", "effectiveness": "High"}
+    ]
+  },
+  {
+    "medicine_id": "M08",
+    "condition": "High Cholesterol",
+    "condition_hi": "उच्च कोलेस्ट्रॉल",
+    "lifestyle_tips": [
+      {"type": "do", "text": "Take at night — cholesterol production peaks at night"},
+      {"type": "do", "text": "Include oats, nuts, and olive oil in diet"},
+      {"type": "do", "text": "Exercise regularly — even brisk walking helps"},
+      {"type": "dont", "text": "Report unexplained muscle pain to doctor immediately"},
+      {"type": "dont", "text": "Avoid grapefruit juice — increases side effects"}
+    ],
+    "timing_advice": "Best taken at night before sleeping",
+    "food_interactions": "Avoid grapefruit juice. Limit fried foods and red meat",
+    "patient_experiences": [
+      {"patient": "Prakash, 69", "feedback": "Cholesterol dropped in 8 weeks. Had mild muscle soreness initially that resolved.", "effectiveness": "High"},
+      {"patient": "Vimala, 73", "feedback": "Take with a small glass of water at night. Works well with daily walk.", "effectiveness": "High"}
+    ]
+  },
+  {
+    "medicine_id": "M01",
+    "condition": "Bacterial Infection",
+    "condition_hi": "जीवाणु संक्रमण",
+    "lifestyle_tips": [
+      {"type": "do", "text": "Complete the full course even if you feel better"},
+      {"type": "do", "text": "Take with food to prevent stomach upset"},
+      {"type": "do", "text": "Include probiotics/yogurt to maintain gut health"},
+      {"type": "dont", "text": "Do not skip doses — can lead to antibiotic resistance"},
+      {"type": "dont", "text": "Avoid alcohol during and 48 hours after course"}
+    ],
+    "timing_advice": "Take at evenly spaced intervals with food",
+    "food_interactions": "Take with meals. Avoid alcohol. Add yogurt/probiotics",
+    "patient_experiences": [
+      {"patient": "Bhaskar, 64", "feedback": "Infection cleared in 5 days. Had some loose motions, yogurt helped.", "effectiveness": "High"},
+      {"patient": "Meena, 71", "feedback": "Always take after food — empty stomach caused severe nausea.", "effectiveness": "High"}
+    ]
+  },
+  {
+    "medicine_id": "M06",
+    "condition": "Hypertension",
+    "condition_hi": "उच्च रक्तचाप",
+    "lifestyle_tips": [
+      {"type": "do", "text": "Take at the same time each day for steady BP control"},
+      {"type": "do", "text": "Monitor for ankle swelling — common side effect"},
+      {"type": "do", "text": "Reduce salt and do regular walking"},
+      {"type": "dont", "text": "Do not stop suddenly — may cause BP spike"},
+      {"type": "dont", "text": "Avoid excessive grapefruit consumption"}
+    ],
+    "timing_advice": "Take once daily, morning or evening with food",
+    "food_interactions": "Limit grapefruit. Moderate calcium-rich foods are fine",
+    "patient_experiences": [
+      {"patient": "Anil, 66", "feedback": "BP well controlled. Had mild ankle swelling initially, resolved naturally.", "effectiveness": "High"},
+      {"patient": "Sarla, 74", "feedback": "Taking for 2 years. Works well with morning walk.", "effectiveness": "High"}
+    ]
+  }
+]

@@ -201,6 +201,14 @@ class MarketMedicine(BaseModel):
     salt_composition: str
     manufacturer: str
     dosage_form: str
+    pack_size: int = 10
+    unit_mrp: float = 0.0
+
+
+class MedicineSearchResponse(BaseModel):
+    query: str
+    count: int
+    medicines: List[MarketMedicine]
 
 
 class PricePoint(BaseModel):
@@ -230,6 +238,68 @@ class FluctuationResponse(BaseModel):
 class MarketMedicineListResponse(BaseModel):
     count: int
     medicines: List[MarketMedicine]
+
+
+# --- Basket / recurring order planner ---
+class BasketItem(BaseModel):
+    medicine_id: str
+    daily_dosage: float = Field(..., gt=0, description="Units per day")
+
+
+class BasketResult(BaseModel):
+    medicine_id: str
+    brand_name: str
+    daily_dosage: float
+    duration_days: int
+    total_units: int
+    strips_needed: int
+    prices_per_source: dict
+    highest_price: float
+    jan_aushadhi_total: float
+    savings: float
+
+
+class BasketCalculationResponse(BaseModel):
+    items: List[BasketResult]
+    duration_days: int
+    source_totals: dict
+    total_savings: float
+
+
+# --- Transit fare estimation ---
+class FareEstimate(BaseModel):
+    type: str
+    label: str
+    base_fare: float
+    per_km_rate: float
+    estimated_fare: float
+
+
+class FareEstimateResponse(BaseModel):
+    distance_km: float
+    fares: List[FareEstimate]
+
+
+# --- Medicine insights (tips & patient experiences) ---
+class LifestyleTip(BaseModel):
+    type: str  # "do" or "dont"
+    text: str
+
+
+class PatientExperience(BaseModel):
+    patient: str
+    feedback: str
+    effectiveness: str
+
+
+class MedicineInsight(BaseModel):
+    medicine_id: str
+    condition: str
+    condition_hi: str
+    lifestyle_tips: List[LifestyleTip]
+    timing_advice: str
+    food_interactions: str
+    patient_experiences: List[PatientExperience]
 
 
 # ---------------------------------------------------------------------------
@@ -288,10 +358,19 @@ __all__ = [
     "NearbyFacility",
     "NearbyFacilitiesResponse",
     "MarketMedicine",
+    "MedicineSearchResponse",
     "PricePoint",
     "CurrentPrice",
     "FluctuationResponse",
     "MarketMedicineListResponse",
+    "BasketItem",
+    "BasketResult",
+    "BasketCalculationResponse",
+    "FareEstimate",
+    "FareEstimateResponse",
+    "LifestyleTip",
+    "PatientExperience",
+    "MedicineInsight",
     "GovScheme",
     "SchemesResponse",
     "AuditResult",

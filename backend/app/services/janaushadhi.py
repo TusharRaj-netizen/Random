@@ -99,14 +99,13 @@ def get_medicine(medicine_id: str) -> Optional[Medicine]:
     return None
 
 
-def build_catalogue_context(max_items: int = 12) -> str:
+def build_catalogue_context(max_items: int = 8) -> str:
     """Build a compact text snapshot of the catalogue for AI grounding."""
     lines: List[str] = []
     for medicine in load_medicines()[:max_items]:
         lines.append(
             f"- {medicine.generic_name} ({medicine.hindi_name}): "
-            f"{medicine.indication}. Jan Aushadhi price Rs.{medicine.jan_aushadhi_price_inr:g} "
-            f"vs branded Rs.{medicine.branded_price_inr:g}. Precautions: {medicine.precautions}"
+            f"{medicine.indication}. Rs.{medicine.jan_aushadhi_price_inr:g} vs branded Rs.{medicine.branded_price_inr:g}."
         )
     return "\n".join(lines)
 

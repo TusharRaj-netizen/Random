@@ -8,6 +8,8 @@ deterministic rule-based assistant so the application remains fully usable.
 
 from __future__ import annotations
 
+import os
+from functools import lru_cache
 from typing import List
 
 from app.config import settings
@@ -109,17 +111,66 @@ def _emergency_reply(language: str) -> str:
 # ---------------------------------------------------------------------------
 # Gemini integration
 # ---------------------------------------------------------------------------
-def _to_gemini_history(history: List[ChatMessage]) -> List[dict]:
-    """Convert chat history to the google-genai ``Content`` format."""
-    return [{"role": msg.role.value, "parts": [msg.content]} for msg in history]
+def _build_ssl_context():
+    """Build an SSL context that trusts both the system CAs and (when present)
+    the sandbox egress-proxy CA, so httpx can reach the Gemini API."""
+    import ssl
+
+    ctx = ssl.create_default_context()
+    # The sandbox routes egress through a mitm proxy whose CA is at
+    # /etc/mitm/ca.crt. Append it on top of the system CAs. In a normal
+    # deployment this file does not exist and the system CAs alone suffice.
+    ca_path = os.getenv("SSL_CERT_FILE", "")
+    if ca_path and os.path.isfile(ca_path):
+        try:
+            ctx.load_verify_locations(ca_path)
+        except Exception:  # pragma: no cover - defensive
+            pass
+    return ctx
+
+
+@lru_cache
+def _get_gemini_client():
+    """Create and cache a google-genai client with the correct SSL context.
+
+    The client is created once and reused. Raises on any failure so the caller
+    can fall back to the rule-based assistant.
+    """
+    import ssl  # noqa: F401  (kept for clarity)
+
+    from google import genai
+    from google.genai import types
+
+    verify_ctx = _build_ssl_context()
+    http_options = types.HttpOptions(
+        client_args={"verify": verify_ctx},
+        async_client_args={"verify": verify_ctx},
+        # Gemini can be slow through the proxy; allow generous timeouts (ms).
+        timeout=60000,
+    )
+    return genai.Client(api_key=settings.gemini_api_key, http_options=http_options)
+
+
+def _to_gemini_history(history: List[ChatMessage]):
+    """Convert chat history to a list of ``types.Content`` objects."""
+    from google.genai import types
+
+    contents = []
+    for msg in history:
+        contents.append(
+            types.Content(
+                role=msg.role.value,
+                parts=[types.Part(text=msg.content)],
+            )
+        )
+    return contents
 
 
 def _generate_with_gemini(message: str, history: List[ChatMessage], language: str) -> str:
     """Call the Gemini model. Raises on any failure so the caller can fall back."""
-    from google import genai  # imported lazily to keep startup light
     from google.genai import types
 
-    client = genai.Client(api_key=settings.gemini_api_key)
+    client = _get_gemini_client()
     catalogue = janaushadhi.build_catalogue_context()
     system_instruction = (
         SYSTEM_PROMPT
@@ -129,7 +180,9 @@ def _generate_with_gemini(message: str, history: List[ChatMessage], language: st
     )
 
     contents = _to_gemini_history(history)
-    contents.append({"role": "user", "parts": [message]})
+    contents.append(
+        types.Content(role="user", parts=[types.Part(text=message)])
+    )
 
     config = types.GenerateContentConfig(
         system_instruction=system_instruction,
